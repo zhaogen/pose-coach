@@ -12,9 +12,7 @@
 
 | 운동 자세 분석 | 운동 결과 요약 |
 |:-:|:-:|
-| <img width="1024" height="600" alt="image" src="https://github.com/user-attachments/assets/9ef1a7a0-489b-4b3a-b105-98a419feb648" />
- | <img width="802" height="640" alt="image" src="https://github.com/user-attachments/assets/4d392e56-3d81-4b19-8c05-bfb286965fa9" />
- |
+| <img width="400" alt="squat" src="https://github.com/user-attachments/assets/9ef1a7a0-489b-4b3a-b105-98a419feb648" /> | <img width="400" alt="summary" src="https://github.com/user-attachments/assets/4d392e56-3d81-4b19-8c05-bfb286965fa9" /> |
 
 ---
 
@@ -59,7 +57,6 @@ ai-pt-trainer/
  │   ├── __init__.py
  │   ├── angle.py              # 관절 각도 계산
  │   └── drawing.py            # 시각화 유틸리티
- ┣ images/                     # 실행 화면 스크린샷
  ┣ main.py                     # 메인 실행 파일
  ┣ workout_log.csv             # 운동 기록 (실행 후 자동 생성)
  ┣ requirements.txt
@@ -141,6 +138,8 @@ Date,Exercise,Count/Sec,Accuracy(%)
 | 2단계 | 스쿼트 · 푸시업 자세 분석 및 카운터 구현 | ✅ |
 | 3단계 | 플랭크 추가 및 피드백 UI 개선 | ✅ |
 | 4단계 | 운동 기록 CSV 저장 + 결과 요약 화면 구현 | ✅ |
-| 5단계 | 테스트 및 최종 | ✅ |
+| 5단계 | 테스트 및 최종 발표 준비 | ✅ |
 
 ---
+
+*본 프로젝트는 학교 텀프로젝트로 개발되었습니다.*
