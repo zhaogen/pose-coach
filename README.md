@@ -71,6 +71,16 @@ pip install -r requirements.txt
 python main.py
 ```
 
+## 📸 실행 화면
+
+### 실행화면
+<img width="1024" height="600" alt="image" src="https://github.com/user-attachments/assets/3a3ed0fc-08f6-47f5-9067-2700d61eef4e" />
+
+
+### 운동 결과 요약
+<img width="802" height="640" alt="image" src="https://github.com/user-attachments/assets/cea064af-727a-4463-90bc-33a4fc39c9f9" />
+
+
 ---
 
 ## 📅 개발 일정 
