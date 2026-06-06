@@ -10,7 +10,7 @@
 
 ## 📸 실행 화면
 
-| 스쿼트 자세 분석 | 운동 결과 요약 |
+| 운동 자세 분석 | 운동 결과 요약 |
 |:-:|:-:|
 | ![Squat](images/squat.png) | ![Summary](images/summary.png) |
 
