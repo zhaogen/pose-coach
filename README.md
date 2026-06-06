@@ -12,7 +12,9 @@
 
 | 운동 자세 분석 | 운동 결과 요약 |
 |:-:|:-:|
-| ![Squat](images/squat.png) | ![Summary](images/summary.png) |
+| <img width="1024" height="600" alt="image" src="https://github.com/user-attachments/assets/9ef1a7a0-489b-4b3a-b105-98a419feb648" />
+ | <img width="802" height="640" alt="image" src="https://github.com/user-attachments/assets/4d392e56-3d81-4b19-8c05-bfb286965fa9" />
+ |
 
 ---
 
