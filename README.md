@@ -1,36 +1,31 @@
 # 🏋️ 내 손안의 PT 선생님
+
 > AI 기반 홈 트레이닝 자세 교정 및 운동 카운터
 
-웹캠 영상을 실시간으로 분석해 **스쿼트·푸시업·플랭크** 자세의 정확도를 판별하고,  
-올바른 자세일 때만 횟수/시간을 자동으로 카운트하는 홈 트레이닝 보조 프로그램입니다.
+웹캠 하나로 **스쿼트 · 푸시업 · 플랭크** 자세를 실시간으로 분석합니다.  
+잘못된 자세는 즉시 경고하고, 올바른 자세일 때 운동 횟수와 시간을 자동으로 카운트합니다.  
+별도 장비 없이 웹캠 하나로 나만의 PT 선생님을 경험해보세요!
 
-
-📸 실행 화면
-운동 자세 분석운동 결과 요약<img width="400" alt="squat" src="https://github.com/user-attachments/assets/9ef1a7a0-489b-4b3a-b105-98a419feb648" /><img width="400" alt="summary" src="https://github.com/user-attachments/assets/4d392e56-3d81-4b19-8c05-bfb286965fa9" />
 ---
 
-## 📁 프로젝트 구조
+## 📸 실행 화면
 
-```
-ai-pt-trainer/
- ┣ models/
- │   ├── __init__.py
- │   └── pose_estimator.py     # MediaPipe Pose 래퍼 (33개 랜드마크)
- ┣ exercises/
- │   ├── __init__.py
- │   ├── base.py               # 운동 분석기 추상 클래스
- │   ├── squat.py              # 스쿼트 분석 로직
- │   ├── pushup.py             # 푸시업 분석 로직
- │   └── plank.py              # 플랭크 분석 로직 (유지 시간 카운트)
- ┣ utils/
- │   ├── __init__.py
- │   ├── angle.py              # 관절 각도 계산 (코사인 법칙)
- │   └── drawing.py            # OpenCV 시각화 유틸리티
- ┣ main.py                     # 메인 실행 파일
- ┣ workout_log.csv             # 운동 기록 자동 저장 (실행 후 생성)
- ┣ requirements.txt
- └── README.md
-```
+| 운동 자세 분석 | 운동 결과 요약 |
+|:-:|:-:|
+| <img width="400" alt="squat" src="https://github.com/user-attachments/assets/9ef1a7a0-489b-4b3a-b105-98a419feb648" /> | <img width="400" alt="summary" src="https://github.com/user-attachments/assets/4d392e56-3d81-4b19-8c05-bfb286965fa9" /> |
+
+---
+
+## 🎯 주요 기능
+
+| 기능 | 설명 |
+|------|------|
+| 실시간 자세 추적 | MediaPipe Pose로 33개 관절을 실시간 검출, 스켈레톤 오버레이 표시 |
+| 자세 정확도 분석 | 관절 각도 계산을 통한 올바른 자세 판별 및 경고 메시지 출력 |
+| 자동 운동 카운터 | 운동 사이클 완료 시 자동 횟수 카운트 (플랭크는 유지 시간) |
+| 정확도 실시간 표시 | 화면 우측 상단에 Accuracy % 실시간 표시 |
+| 운동 결과 요약 | 종료 시 운동별 횟수·정확도를 한눈에 보여주는 요약 화면 |
+| 운동 기록 저장 | 매 세션 결과를 `workout_log.csv`에 자동 누적 저장 |
 
 ---
 
@@ -45,13 +40,42 @@ ai-pt-trainer/
 
 ---
 
+## 📁 프로젝트 구조
+
+```
+ai-pt-trainer/
+ ┣ models/
+ │   ├── __init__.py
+ │   └── pose_estimator.py     # MediaPipe Pose 래퍼
+ ┣ exercises/
+ │   ├── __init__.py
+ │   ├── base.py               # 운동 분석기 추상 클래스
+ │   ├── squat.py              # 스쿼트 분석 로직
+ │   ├── pushup.py             # 푸시업 분석 로직
+ │   └── plank.py              # 플랭크 분석 로직
+ ┣ utils/
+ │   ├── __init__.py
+ │   ├── angle.py              # 관절 각도 계산
+ │   └── drawing.py            # 시각화 유틸리티
+ ┣ main.py                     # 메인 실행 파일
+ ┣ workout_log.csv             # 운동 기록 (실행 후 자동 생성)
+ ┣ requirements.txt
+ └── README.md
+```
+
+---
+
 ## 🚀 실행 방법
 
 ```bash
-# 1. 의존성 설치
+# 1. 저장소 클론
+git clone https://github.com/<your-username>/ai-pt-trainer.git
+cd ai-pt-trainer
+
+# 2. 의존성 설치
 pip install -r requirements.txt
 
-# 2. 실행
+# 3. 실행
 python main.py
 ```
 
@@ -64,44 +88,45 @@ python main.py
 | `1` | 스쿼트 모드 |
 | `2` | 푸시업 모드 |
 | `3` | 플랭크 모드 |
-| `r` | 현재 운동 카운터 초기화 |
-| `q` / `ESC` | 종료 + 결과 요약 화면 |
+| `r` | 카운터 초기화 |
+| `q` / `ESC` | 종료 + 결과 요약 |
 
 ---
 
-## 🎯 자세 판별 기준
+## 🏃 지원 운동 및 판별 기준
 
-### 스쿼트
-| 체크 항목 | 기준 |
-|----------|------|
-| 무릎 각도 (hip→knee→ankle) | DOWN: 70~110° / UP: 160°+ |
-| 상체 전경 | 50° 초과 시 경고 |
+### 🦵 스쿼트
+- 어깨→힙→무릎 각도 기반 카운트 (DOWN < 110° / UP > 150°)
+- 상체 과전경(55° 초과) 및 과도한 하강(60° 미만) 시 경고
 
-### 푸시업
-| 체크 항목 | 기준 |
-|----------|------|
-| 팔꿈치 각도 (shoulder→elbow→wrist) | DOWN: 70~110° / UP: 150°+ |
-| 몸통 직선 (shoulder→hip→ankle) | 155°+ 유지 |
+### 💪 푸시업
+- 팔꿈치 각도 기반 카운트 (DOWN < 115° / UP > 150°)
+- 몸통 직선 무너짐(150° 미만) 시 경고
 
-### 플랭크
-| 체크 항목 | 기준 |
-|----------|------|
-| 몸통 직선 (shoulder→hip→ankle) | 158°+ 유지 |
-| 팔 자세 | 팔꿈치 플랭크: 80~105° / 스트레이트: 155°+ |
-| 카운트 방식 | 올바른 자세 유지 **시간(초)** 측정 |
+### 🧘 플랭크
+- 올바른 자세 유지 시간(초) 카운트
+- 몸통 각도 150° 미만 시 경고 및 타이머 정지
 
 ---
 
 ## 📊 운동 기록 저장
 
-종료 시 `workout_log.csv`에 자동 저장됩니다.
+종료 시 `workout_log.csv`에 자동으로 기록됩니다.
 
 ```
-날짜,운동,횟수/초,정확도(%)
-2025-06-06 14:30,Squat,15,82.0
-2025-06-06 14:30,Push-up,10,75.0
-2025-06-06 14:30,Plank,45,91.0
+Date,Exercise,Count/Sec,Accuracy(%)
+2026-06-06 15:33,Squat,3,77.3
+2026-06-06 15:33,Push-up,7,76.0
+2026-06-06 15:33,Plank,12,81.6
 ```
+
+---
+
+## 💡 사용 팁
+
+- 카메라에서 **1~1.5m** 거리를 유지하세요
+- **측면**으로 서면 각도 인식이 더 정확합니다
+- 밝은 환경일수록 인식률이 높아집니다
 
 ---
 
@@ -110,15 +135,11 @@ python main.py
 | 단계 | 내용 | 상태 |
 |------|------|------|
 | 1단계 | 환경 설정 및 포즈 추정 라이브러리 탐색 | ✅ |
-| 2단계 | 스쿼트/푸시업 자세 분석 및 카운터 구현 | ✅ |
+| 2단계 | 스쿼트 · 푸시업 자세 분석 및 카운터 구현 | ✅ |
 | 3단계 | 플랭크 추가 및 피드백 UI 개선 | ✅ |
-| 4단계 | 운동 기록 CSV 저장 + 결과 요약 화면 | ✅ |
-| 5단계 | 테스트 및 최종 발표 준비 | 🔄 |
+| 4단계 | 운동 기록 CSV 저장 + 결과 요약 화면 구현 | ✅ |
+| 5단계 | 테스트 및 최종 발표 준비 | ✅ |
 
 ---
 
-## 📚 참고 자료
-
-- [MediaPipe Pose](https://developers.google.com/mediapipe/solutions/vision/pose_landmarker) - Google의 포즈 추정 라이브러리
-- [OpenCV](https://opencv.org/) - 영상 처리 라이브러리
-- [NumPy](https://numpy.org/) - 수치 계산 라이브러리
+*본 프로젝트는 학교 텀프로젝트로 개발되었습니다.*
