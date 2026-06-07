@@ -4,6 +4,9 @@
 웹캠 영상을 실시간으로 분석해 **스쿼트·푸시업·플랭크** 자세의 정확도를 판별하고,  
 올바른 자세일 때만 횟수/시간을 자동으로 카운트하는 홈 트레이닝 보조 프로그램입니다.
 
+
+📸 실행 화면
+운동 자세 분석운동 결과 요약<img width="400" alt="squat" src="https://github.com/user-attachments/assets/9ef1a7a0-489b-4b3a-b105-98a419feb648" /><img width="400" alt="summary" src="https://github.com/user-attachments/assets/4d392e56-3d81-4b19-8c05-bfb286965fa9" />
 ---
 
 ## 📁 프로젝트 구조
