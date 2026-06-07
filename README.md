@@ -142,4 +142,9 @@ Date,Exercise,Count/Sec,Accuracy(%)
 
 ---
 
-*본 프로젝트는 학교 텀프로젝트로 개발되었습니다.*
+## 📚 참고 자료
+
+- [MediaPipe Pose](https://developers.google.com/mediapipe/solutions/vision/pose_landmarker) - Google의 포즈 추정 라이브러리
+- [OpenCV](https://opencv.org/) - 영상 처리 라이브러리
+- [NumPy](https://numpy.org/) - 수치 계산 라이브러리
+
